@@ -55,3 +55,6 @@ aidlc-docs
 
 # Separate git repos (not part of this project)
 cao-flows/
+
+# Siglify — per-laptop team selection (gitignored so each machine picks its own)
+.siglify/siglify.yml
