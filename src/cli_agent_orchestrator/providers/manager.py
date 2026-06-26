@@ -5,6 +5,7 @@ from typing import Dict, List, Optional
 
 from cli_agent_orchestrator.clients.database import get_terminal_metadata
 from cli_agent_orchestrator.models.provider import ProviderType
+from cli_agent_orchestrator.providers.aider import AiderProvider
 from cli_agent_orchestrator.providers.base import BaseProvider
 from cli_agent_orchestrator.providers.claude_code import ClaudeCodeProvider
 from cli_agent_orchestrator.providers.codex import CodexProvider
@@ -132,6 +133,15 @@ class ProviderManager:
                     allowed_tools,
                     model=model,
                     skill_prompt=skill_prompt,
+                )
+            elif provider_type == ProviderType.AIDER.value:
+                provider = AiderProvider(
+                    terminal_id,
+                    tmux_session,
+                    tmux_window,
+                    agent_profile,
+                    allowed_tools,
+                    model=model,
                 )
             else:
                 raise ValueError(f"Unknown provider type: {provider_type}")
